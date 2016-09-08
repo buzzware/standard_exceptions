@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "standard_exceptions"
   spec.version       = StandardExceptions::VERSION
   spec.authors       = ["Gary McGhee"]
-  spec.email         = ["gary@buzzware.com.au"]
+  spec.email         = ["contact@buzzware.com.au"]
 
   spec.summary       = %q{This is a library of standard exceptions for any project, and nothing else.}
   #spec.description   = %q{TODO: Write a longer description or delete this line.}
