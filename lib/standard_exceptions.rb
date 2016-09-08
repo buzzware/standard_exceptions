@@ -32,3 +32,8 @@ require 'standard_exceptions/http'
 require 'standard_exceptions/application'
 require 'standard_exceptions/http_methods'
 require 'standard_exceptions/application_methods'
+
+module StandardExceptions::Methods
+	include StandardExceptions::HttpMethods
+	include StandardExceptions::ApplicationMethods
+end
