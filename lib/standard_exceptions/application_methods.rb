@@ -1,13 +1,15 @@
 module StandardExceptions::ApplicationMethods
 
+	include ::StandardExceptions::Application
+
 	module_function
 
   def validation_failed!(message=nil)
-    raise ::StandardExceptions::ValidationFailed.new(message)
+    raise ValidationFailed.new(message)
   end
 
 	def failed!(message=nil)
-    raise ::StandardExceptions::Failed.new(message)
+    raise Failed.new(message)
   end
 
 end

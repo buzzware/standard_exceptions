@@ -1,7 +1,7 @@
 # Application Errors
 module StandardExceptions::Application
 
-	class Failed < UnprocessableEntity
+	class Failed < ::StandardExceptions::Http::UnprocessableEntity
 		MESSAGE = 'The requested operation was not successful.'
 	 end
 

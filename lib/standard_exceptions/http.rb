@@ -1,20 +1,20 @@
 # HTTP Status Errors
 module StandardExceptions::Http
 
-	class BadRequest < Exception
+	class BadRequest < StandardExceptions::Exception
 		MESSAGE = 'The request was not processed due to a syntax error.'
 		STATUS = 400
 	end
-	class Unauthorized < Exception
+	class Unauthorized < StandardExceptions::Exception
 		MESSAGE = 'The request was not processed because it lacked acceptable authentication credentials.'
 		STATUS = 401
 	end
 	#PaymentRequired	402
-	class Forbidden < Exception
+	class Forbidden < StandardExceptions::Exception
 		MESSAGE = 'The server understood the request but refuses to authorize it.'
 		STATUS = 403
 	end
-	class NotFound < Exception
+	class NotFound < StandardExceptions::Exception
 		MESSAGE = 'The server did not find the requested resource.'
 		STATUS = 404
 	end
@@ -31,14 +31,14 @@ module StandardExceptions::Http
 	# UnsupportedMediaType	415
 	# RequestedRangeNotSatisfiable	416
 	# ExpectationFailed	417
-	class UnprocessableEntity < Exception
+	class UnprocessableEntity < StandardExceptions::Exception
 		MESSAGE = 'The server understands the request but was unable to process it.'
 		STATUS = 422
 	end
 	# Locked	423
 	# FailedDependency	424
 	# UpgradeRequired	426
-	class InternalServerError < Exception
+	class InternalServerError < StandardExceptions::Exception
 		MESSAGE = 'The server encountered an unexpected condition that prevented it from fulfilling the request.'
 		STATUS = 500
 	end
