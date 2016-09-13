@@ -11,9 +11,9 @@ module StandardExceptions
 		attr_accessor :status
 
 		# eg. 'Not Found'
-		def self.human_name
-			i = name.rindex('::')
-      base_name = name[(i+2)..-1]
+		def self.human_name(e_class=self)
+			i = e_class.name.rindex('::')
+      base_name = e_class.name[(i+2)..-1]
 			base_name.split(/(?=[A-Z])/).join(' ')
 		end
 
@@ -21,9 +21,15 @@ module StandardExceptions
 			self.class.human_name
 		end
 
-		def initialize(message=nil,status=nil)
+		attr_writer :inner
+		def inner
+			@inner || self.cause
+		end
+
+		def initialize(message=nil,status=nil,inner=nil)
 			super(message || self.class::MESSAGE)
 			@status = (status || self.class::STATUS)
+			@inner = inner
 		end
 	end
 end
