@@ -2,13 +2,13 @@ require "standard_exceptions/version"
 
 module StandardExceptions
 
-	# messages are based on http://httpstatuses.com
-
-	class Exception < ::StandardError
-		MESSAGE = 'An error occurred that could not be identified'
-		STATUS = 500
-
+	module ExceptionInterface
 		attr_accessor :status
+
+		attr_writer :inner
+		def inner
+			@inner || self.cause
+		end
 
 		# eg. 'Not Found'
 		def self.human_name(e_class=self)
@@ -20,11 +20,15 @@ module StandardExceptions
 		def human_name
 			self.class.human_name
 		end
+	end
 
-		attr_writer :inner
-		def inner
-			@inner || self.cause
-		end
+	# messages are based on http://httpstatuses.com
+
+	class Exception < ::StandardError
+		MESSAGE = 'An error occurred that could not be identified'
+		STATUS = 500
+
+		include ExceptionInterface
 
 		def initialize(message=nil,status=nil,inner=nil)
 			super(message || self.class::MESSAGE)
