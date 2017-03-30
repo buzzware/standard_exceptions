@@ -10,17 +10,9 @@ Gem::Specification.new do |spec|
   spec.email         = ["contact@buzzware.com.au"]
 
   spec.summary       = %q{This is a library of standard exceptions for any project, and nothing else.}
-  #spec.description   = %q{TODO: Write a longer description or delete this line.}
+  spec.description   = %q{There is great benefit in adopting a standard library of exceptions. Projects and libraries can all assume the same set of exception classes will be raised and caught using the built in language rescue keyword which filters on class. It becomes especially powerful for building API's, where specific exception classes can be made to return specific HTTP status codes. This libary also provides helper bang-methods eg. unauthorised! for raising these standard kinds of errors}
   spec.homepage      = "http://standardexceptions.org"
   spec.license       = "MIT"
-
-  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
-  # to allow pushing to a single host or delete this section to allow pushing to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
-  else
-    raise "RubyGems 2.0 or newer is required to protect against public gem pushes."
-  end
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = "exe"
