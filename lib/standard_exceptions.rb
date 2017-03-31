@@ -3,18 +3,25 @@ require "standard_exceptions/version"
 module StandardExceptions
 
 	module ExceptionInterface
+
+		def self.included(aClass)
+	    aClass.send :extend, ClassMethods
+	  end
+
+		module ClassMethods
+			# eg. 'Not Found'
+			def human_name(e_class=self)
+				i = e_class.name.rindex('::')
+	      base_name = e_class.name[(i+2)..-1]
+				base_name.split(/(?=[A-Z])/).join(' ')
+			end
+		end
+
 		attr_accessor :status
 
 		attr_writer :inner
 		def inner
 			@inner || self.cause
-		end
-
-		# eg. 'Not Found'
-		def self.human_name(e_class=self)
-			i = e_class.name.rindex('::')
-      base_name = e_class.name[(i+2)..-1]
-			base_name.split(/(?=[A-Z])/).join(' ')
 		end
 
 		def human_name
